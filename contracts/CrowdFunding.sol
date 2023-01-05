@@ -50,7 +50,26 @@ contract CrowdFunding {
 
     }
 
-    function donateToCampaign() {}
+    // Use ID of campaign you want to donate money to
+    // Payable means you can send crypto currency throughout the function
+    function donateToCampaign(uint256 _id) public payable {
+        // get amount from frontend
+        uint256 amount = msg.value;
+
+        Campaign storage campaign = campaigns[_id];
+
+        campaign.donators.push(msg.sender);
+        campaign.donations.push(amount);
+
+        // Let us know if transaction has been sent
+        // payable accepts two different params sent & receive
+        (bool sent, ) = payable(campaign.owner).call{value: amount}("");
+
+        if(sent) {
+            campaign.amountCollected = campaign.amountCollected + amount;
+        }
+
+    }
 
     function getDonators() {}
 
