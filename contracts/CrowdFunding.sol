@@ -2,5 +2,29 @@
 pragma solidity ^0.8.9;
 
 contract CrowdFunding {
-    constructor() {}
+    // Struct is like an objct in JS
+    // This is to specify types
+    struct Campaign {
+        address owner;
+        string title;
+        string description;
+        uint256 target;
+        uint256 deadline;
+        uint256 amountCollected;
+        string image;
+        address[] donators;
+        uint256[] donations;
+    }
+
+    mapping(uint256 => Campaign) public campaigns;
+
+    uint256 public numberOfCampaigns = 0;
+
+    function createCampaign() {};
+
+    function donateToCampaign() {};
+
+    function getDonators() {};
+
+    function getCampaigns() {};
 }
