@@ -7,6 +7,7 @@ contract CrowdFunding {
     struct Campaign {
         address owner;
         string title;
+        string category;
         string description;
         uint256 target;
         uint256 deadline;
@@ -23,6 +24,7 @@ contract CrowdFunding {
     function createCampaign(
         address _owner,
         string memory _title,
+        string memory _category,
         string memory _description,
         uint256 _target,
         uint256 _deadline,
@@ -44,6 +46,7 @@ contract CrowdFunding {
 
         campaign.owner = _owner;
         campaign.title = _title;
+        campaign.category = _category;
         campaign.description = _description;
         campaign.target = _target;
         campaign.deadline = _deadline;
@@ -102,4 +105,11 @@ contract CrowdFunding {
 
         return allCampaigns;
     }
+
+    // Delete Campaign
+    // function deleteCampaign(uint256 _id) public view {
+
+        
+    
+    // }
 }
